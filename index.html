@@ -10,21 +10,21 @@
 <style>
 /* ===== Design tokens ===== */
 :root{
-  --ink:#0E141F;
-  --ink-2:#161E2E;
-  --ink-3:#202B40;
-  --ink-text-soft:#9AA4BC;
-  --ink-text-faint:#5C6680;
-  --paper:#FBF8F1;
-  --paper-dim:#F1EBDB;
-  --verify:#1F8A77;
-  --verify-deep:#13594C;
-  --verify-soft:#E4F0EC;
-  --brass:#B5894C;
-  --brass-deep:#8A6736;
-  --text:#221F18;
-  --muted:#6B6354;
-  --hairline:#DED4BC;
+  --ink:#101f35;
+  --ink-2:#172b45;
+  --ink-3:#314761;
+  --ink-text-soft:#c4ced9;
+  --ink-text-faint:#8797aa;
+  --paper:#fcf8ee;
+  --paper-dim:#f2e9d9;
+  --verify:#8c1d40;
+  --verify-deep:#68152f;
+  --verify-soft:#f3dfe4;
+  --brass:#d17c25;
+  --brass-deep:#934914;
+  --text:#172231;
+  --muted:#61594e;
+  --hairline:#d8cab4;
   --display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --body: 'Source Serif 4', Georgia, 'Times New Roman', serif;
   --mono: 'IBM Plex Mono', 'Courier New', monospace;
@@ -366,10 +366,10 @@ body.study-mode .cover-emblem img { filter: drop-shadow(0 0 10px rgba(108, 222, 
 }
 .defined-term:hover::after, .defined-term:focus::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 body.study-mode {
-  --ink: #081b22; --ink-2: #0d2830; --ink-3: #1d4047;
-  --paper: #112d33; --paper-dim: #173940; --text: #e7eeee; --muted: #b6c7c8;
-  --hairline: #31565c; --verify: #63b7a4; --verify-deep: #99d6c5; --brass: #d1b276; --brass-deep: #e1c893;
-  background: #081b22;
+  --ink: #081522; --ink-2: #10243a; --ink-3: #28465d;
+  --paper: #13293a; --paper-dim: #1d364a; --text: #f0eadf; --muted: #c6c0b5;
+  --hairline: #456076; --verify: #c34d69; --verify-deep: #ffb5c0; --brass: #ed9b3f; --brass-deep: #ffd090;
+  background: #081522;
 }
 body.study-mode article { box-shadow: 0 24px 60px rgba(0,0,0,.48); }
 body.study-mode .reading-control { box-shadow: 0 12px 30px rgba(0,0,0,.38); }
@@ -395,13 +395,13 @@ body.study-mode .defined-term { color: #a8dfd1; }
     font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
     font-size: 8pt;
     letter-spacing: .08em;
-    color: #163b52;
+    color: #68152f;
   }
   @bottom-center {
     content: "Savanna Carbon Solutions Ltd v. DigiCarbon International PLC  |  Page " counter(page) " of " counter(pages);
     font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
     font-size: 8pt;
-    color: #163b52;
+    color: #68152f;
   }
 }
 @media print {
@@ -435,7 +435,7 @@ body.study-mode .defined-term { color: #a8dfd1; }
     transform: translate(-50%, -50%);
     z-index: 0;
     width: max-content;
-    color: #163b52;
+    color: #68152f;
     opacity: 0;
     font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
     font-size: 31pt;
@@ -448,30 +448,30 @@ body.study-mode .defined-term { color: #a8dfd1; }
   .shell, main, article { display: block !important; position: relative; z-index: 1; width: auto !important; max-width: none !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: 0 !important; background: transparent !important; }
   .cover { min-height: 249mm; padding: 57mm 16mm 32mm !important; border-bottom: 0 !important; display: flex; flex-direction: column; justify-content: center; break-after: page; page-break-after: always; }
   .cover-emblem { opacity: 1; }
-  .cover-eyebrow { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; font-size: 8pt; font-weight: 700; letter-spacing: .18em; color: #163b52; }
+  .cover-eyebrow { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; font-size: 8pt; font-weight: 700; letter-spacing: .18em; color: #68152f; }
   .cover h1 { font-family: Georgia, 'Times New Roman', serif; font-size: 25pt; line-height: 1.22; color: #111; }
-  .cover .cover-sub { font-family: Georgia, 'Times New Roman', serif; font-size: 13pt; color: #163b52; }
-  .stamp { margin-top: 26mm; border-color: #163b52; outline-color: #a67c32; }
+  .cover .cover-sub { font-family: Georgia, 'Times New Roman', serif; font-size: 13pt; color: #68152f; }
+  .stamp { margin-top: 26mm; border-color: #68152f; outline-color: #d17c25; }
   .content-pad { padding: 0 16mm 7mm !important; }
-  article h2 { font-family: Georgia, 'Times New Roman', serif; font-size: 15pt; line-height: 1.25; margin: 0 0 5mm !important; padding: 0 0 2.3mm !important; border-top: 0 !important; border-bottom: 1.2pt solid #163b52; color: #111; break-after: avoid; page-break-after: avoid; }
+  article h2 { font-family: Georgia, 'Times New Roman', serif; font-size: 15pt; line-height: 1.25; margin: 0 0 5mm !important; padding: 0 0 2.3mm !important; border-top: 0 !important; border-bottom: 1.2pt solid #68152f; color: #111; break-after: avoid; page-break-after: avoid; }
   .content-pad > h2:not(#content) { break-before: page; page-break-before: always; padding-top: 2mm !important; }
-  article h3 { font-family: Georgia, 'Times New Roman', serif; font-size: 12pt; line-height: 1.3; color: #163b52; margin: 6mm 0 3mm; break-after: avoid; page-break-after: avoid; }
-  article h4 { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; font-size: 8pt; letter-spacing: .12em; color: #163b52; margin: 5mm 0 2mm; break-after: avoid; page-break-after: avoid; }
+  article h3 { font-family: Georgia, 'Times New Roman', serif; font-size: 12pt; line-height: 1.3; color: #68152f; margin: 6mm 0 3mm; break-after: avoid; page-break-after: avoid; }
+  article h4 { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; font-size: 8pt; letter-spacing: .12em; color: #68152f; margin: 5mm 0 2mm; break-after: avoid; page-break-after: avoid; }
   article p, article li, article td, article blockquote { text-align: justify; text-align-last: left; hyphens: auto; }
   article p { margin: 0 0 3.2mm; orphans: 3; widows: 3; }
   article ul, article ol { margin: 3mm 0 4mm; }
   article li { margin-bottom: 1.7mm; break-inside: avoid; page-break-inside: avoid; }
   article ol > li { padding-left: 9mm; margin: 0 0 3.2mm; }
-  article ol > li::before { background: #163b52; width: 5.5mm; height: 5.5mm; font-size: 7.5pt; }
+  article ol > li::before { background: #68152f; width: 5.5mm; height: 5.5mm; font-size: 7.5pt; }
   .divider { margin: 5mm 0; break-after: avoid; page-break-after: avoid; }
   .divider-mark { width: 5mm; height: 5mm; font-size: 7pt; }
-  blockquote.ledger-quote { margin: 3.5mm 0; padding: 3.5mm 4.5mm; font-family: Georgia, 'Times New Roman', serif; font-size: 9.6pt; line-height: 1.42; border-left-color: #163b52; break-inside: avoid; page-break-inside: avoid; }
+  blockquote.ledger-quote { margin: 3.5mm 0; padding: 3.5mm 4.5mm; font-family: Georgia, 'Times New Roman', serif; font-size: 9.6pt; line-height: 1.42; border-left-color: #68152f; break-inside: avoid; page-break-inside: avoid; }
   .table-wrap { margin: 4mm 0; overflow: visible; break-inside: avoid; page-break-inside: avoid; }
   table { font-size: 8.9pt; }
   thead { display: table-header-group; }
   tr { break-inside: avoid; page-break-inside: avoid; }
   th, td { padding: 2.2mm 2.8mm; vertical-align: top; }
-  th { font-size: 7.5pt; background: #163b52 !important; }
+  th { font-size: 7.5pt; background: #68152f !important; }
   a { color: inherit !important; text-decoration: none !important; }
   .cover + .content-pad .divider:first-child { display: none; }
 }
