@@ -314,15 +314,183 @@ code{font-family:var(--mono); background:var(--paper-dim); padding:1px 5px; bord
   .content-pad{padding:36px 26px 56px}
 }
 </style>
+<style id="competition-print-layout">
+/* Competition-ready A4 print treatment */
+/* One restrained, court-document type system throughout. */
+:root {
+  --display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --body: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --mono: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+}
+.wordmark, .header-meta, aside#toc h2, .btn, .toc-idx,
+article h4, .stamp-inner, h2.exhibit-heading::after,
+h2.order-heading::after, th, .doc-footer {
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  font-weight: 600;
+}
+.wordmark, .header-meta, aside#toc h2, .btn, .toc-idx,
+article h4, th, .doc-footer { letter-spacing: .08em; }
+.cover h1, article h2, article h3 { letter-spacing: 0; }
+/* Official competition emblem: visible as an insignia and lightly etched into the reading surface. */
+.wordmark { display: flex; align-items: center; gap: 10px; }
+.header-emblem { width: 34px; height: 34px; object-fit: contain; filter: drop-shadow(0 2px 5px rgba(0,0,0,.28)); }
+.cover-emblem {
+  position: relative; z-index: 1; margin: 30px auto 0; text-align: center; opacity: 1;
+}
+.cover-emblem img { display: block; width: 174px; height: 174px; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 8px 12px rgba(14,20,31,.2)); }
+.site-emblem-watermark {
+  position: fixed; top: 52%; left: 51%; width: min(82vw, 980px); height: auto;
+  transform: translate(-50%, -50%); opacity: .085; pointer-events: none; z-index: 3;
+  filter: sepia(.18) saturate(.65) contrast(1.08);
+}
+body.study-mode .site-emblem-watermark { opacity: .1; filter: sepia(.1) saturate(.55) brightness(1.5); }
+body.study-mode .cover-emblem img { filter: drop-shadow(0 0 10px rgba(108, 222, 204, .7)) drop-shadow(0 0 24px rgba(66, 177, 164, .42)); }
+/* Reading tools: a calm late-night palette and a scroll-aware definitions aid. */
+.reading-tools { position: fixed; right: 24px; bottom: 24px; z-index: 20; }
+.reading-control {
+  border: 1px solid var(--verify-deep); border-radius: 3px; padding: 8px 11px;
+  background: var(--paper); color: var(--verify-deep); box-shadow: 0 7px 20px rgba(0,0,0,.14);
+  font-family: var(--body); font-size: .82rem; font-weight: 600; cursor: pointer;
+}
+.reading-control:hover, .reading-control[aria-expanded="true"] { background: var(--verify-deep); color: var(--paper); }
+.defined-term { position: relative; color: var(--verify-deep); border-bottom: 1px dotted var(--verify); cursor: help; font-weight: inherit; }
+.defined-term:focus { outline: 2px solid var(--brass); outline-offset: 2px; }
+.defined-term::after {
+  content: attr(data-definition); position: absolute; left: 50%; bottom: calc(100% + 9px);
+  transform: translateX(-50%) translateY(4px); z-index: 30; width: min(300px, 70vw);
+  padding: 10px 12px; border: 1px solid var(--hairline); border-left: 3px solid var(--verify);
+  border-radius: 3px; background: var(--ink-2); color: var(--paper); box-shadow: 0 12px 28px rgba(0,0,0,.22);
+  font-family: var(--body); font-size: .88rem; font-weight: 400; line-height: 1.42; letter-spacing: 0;
+  text-align: left; text-transform: none; opacity: 0; visibility: hidden; transition: opacity .16s ease, transform .16s ease;
+  pointer-events: none;
+}
+.defined-term:hover::after, .defined-term:focus::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+body.study-mode {
+  --ink: #081b22; --ink-2: #0d2830; --ink-3: #1d4047;
+  --paper: #112d33; --paper-dim: #173940; --text: #e7eeee; --muted: #b6c7c8;
+  --hairline: #31565c; --verify: #63b7a4; --verify-deep: #99d6c5; --brass: #d1b276; --brass-deep: #e1c893;
+  background: #081b22;
+}
+body.study-mode article { box-shadow: 0 24px 60px rgba(0,0,0,.48); }
+body.study-mode .reading-control { box-shadow: 0 12px 30px rgba(0,0,0,.38); }
+body.study-mode .defined-term { color: #a8dfd1; }
+@media (max-width: 760px) {
+  .reading-tools { right: 14px; bottom: 14px; }
+}
+/* The requested justified setting also applies while the document is read on screen. */
+.content-pad p,
+.content-pad li,
+.content-pad td,
+.content-pad blockquote {
+  text-align: justify;
+  text-align-last: left;
+  hyphens: auto;
+}
+.content-pad p:has(br) { text-align: left; }
+@page {
+  size: A4;
+  margin: 10mm 0;
+  @top-center {
+    content: "YOUNG ARBITRATORS SOCIETY MOOT — SECOND EDITION 2026";
+    font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    font-size: 8pt;
+    letter-spacing: .08em;
+    color: #163b52;
+  }
+  @bottom-center {
+    content: "Savanna Carbon Solutions Ltd v. DigiCarbon International PLC  |  Page " counter(page) " of " counter(pages);
+    font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    font-size: 8pt;
+    color: #163b52;
+  }
+}
+@media print {
+  html, body { width: 210mm; min-height: 297mm; background: #fff !important; }
+  .reading-tools { display: none !important; }
+  .site-emblem-watermark { display: none !important; }
+  body { color: #171717; font-family: Georgia, 'Times New Roman', serif; font-size: 10.4pt; line-height: 1.47; }
+  /* Repeated circular seal watermark for the competition copy. */
+  body::before {
+    content: "";
+    display: flex !important;
+    position: fixed;
+    top: 48%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    width: 158mm; height: 158mm;
+    padding: 0;
+    align-items: flex-start;
+    justify-content: center;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    background: url('yas-official-emblem.png') center / contain no-repeat !important;
+    opacity: .055;
+    pointer-events: none;
+  }
+  body::after {
+    content: none;
+    position: fixed;
+    top: 48%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    width: max-content;
+    color: #163b52;
+    opacity: 0;
+    font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    font-size: 31pt;
+    font-weight: 600;
+    letter-spacing: .08em;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .site-header, aside#toc, .toc-controls, .doc-footer { display: none !important; }
+  .shell, main, article { display: block !important; position: relative; z-index: 1; width: auto !important; max-width: none !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: 0 !important; background: transparent !important; }
+  .cover { min-height: 249mm; padding: 57mm 16mm 32mm !important; border-bottom: 0 !important; display: flex; flex-direction: column; justify-content: center; break-after: page; page-break-after: always; }
+  .cover-emblem { opacity: 1; }
+  .cover-eyebrow { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; font-size: 8pt; font-weight: 700; letter-spacing: .18em; color: #163b52; }
+  .cover h1 { font-family: Georgia, 'Times New Roman', serif; font-size: 25pt; line-height: 1.22; color: #111; }
+  .cover .cover-sub { font-family: Georgia, 'Times New Roman', serif; font-size: 13pt; color: #163b52; }
+  .stamp { margin-top: 26mm; border-color: #163b52; outline-color: #a67c32; }
+  .content-pad { padding: 0 16mm 7mm !important; }
+  article h2 { font-family: Georgia, 'Times New Roman', serif; font-size: 15pt; line-height: 1.25; margin: 0 0 5mm !important; padding: 0 0 2.3mm !important; border-top: 0 !important; border-bottom: 1.2pt solid #163b52; color: #111; break-after: avoid; page-break-after: avoid; }
+  .content-pad > h2:not(#content) { break-before: page; page-break-before: always; padding-top: 2mm !important; }
+  article h3 { font-family: Georgia, 'Times New Roman', serif; font-size: 12pt; line-height: 1.3; color: #163b52; margin: 6mm 0 3mm; break-after: avoid; page-break-after: avoid; }
+  article h4 { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; font-size: 8pt; letter-spacing: .12em; color: #163b52; margin: 5mm 0 2mm; break-after: avoid; page-break-after: avoid; }
+  article p, article li, article td, article blockquote { text-align: justify; text-align-last: left; hyphens: auto; }
+  article p { margin: 0 0 3.2mm; orphans: 3; widows: 3; }
+  article ul, article ol { margin: 3mm 0 4mm; }
+  article li { margin-bottom: 1.7mm; break-inside: avoid; page-break-inside: avoid; }
+  article ol > li { padding-left: 9mm; margin: 0 0 3.2mm; }
+  article ol > li::before { background: #163b52; width: 5.5mm; height: 5.5mm; font-size: 7.5pt; }
+  .divider { margin: 5mm 0; break-after: avoid; page-break-after: avoid; }
+  .divider-mark { width: 5mm; height: 5mm; font-size: 7pt; }
+  blockquote.ledger-quote { margin: 3.5mm 0; padding: 3.5mm 4.5mm; font-family: Georgia, 'Times New Roman', serif; font-size: 9.6pt; line-height: 1.42; border-left-color: #163b52; break-inside: avoid; page-break-inside: avoid; }
+  .table-wrap { margin: 4mm 0; overflow: visible; break-inside: avoid; page-break-inside: avoid; }
+  table { font-size: 8.9pt; }
+  thead { display: table-header-group; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  th, td { padding: 2.2mm 2.8mm; vertical-align: top; }
+  th { font-size: 7.5pt; background: #163b52 !important; }
+  a { color: inherit !important; text-decoration: none !important; }
+  .cover + .content-pad .divider:first-child { display: none; }
+}
+</style>
 </head>
 <body>
 
+<img src="yas-official-emblem.png" class="site-emblem-watermark" alt="" aria-hidden="true">
+
 <header class="site-header">
   <div class="site-header-inner">
-    <div class="wordmark"><strong>Young Arbitrators Society Moot</strong> &middot; Second Edition, 2026</div>
+    <div class="wordmark"><img src="yas-official-emblem.png" class="header-emblem" alt="Young Arbitrators Society official emblem"><span><strong>Young Arbitrators Society Moot</strong> &middot; Second Edition, 2026</span></div>
     <div class="header-meta">Record No. NCIA/ARB/2024/047</div>
   </div>
 </header>
+
+<div class="reading-tools" aria-label="Reading tools">
+  <button id="study-mode-toggle" class="reading-control" type="button" aria-pressed="false">Study mode</button>
+</div>
 
 <div class="shell">
   <aside id="toc">
@@ -369,12 +537,8 @@ code{font-family:var(--mono); background:var(--paper-dim); padding:1px 5px; bord
         <div class="cover-sub">Young Arbitrators Society Moot &mdash; Second Edition, 2026</div>
         <div class="cover-place">Nairobi, Kenya</div>
         <div class="cover-org">Organised by<br><strong>The Young Arbitrators Society</strong>, Kenyatta University School of Law</div>
-        <div class="stamp" aria-hidden="true">
-          <div class="stamp-inner">
-            <span class="l1">Verified</span>
-            <span class="l2">Record</span>
-            <span class="l3">NCIA &middot; ARB &middot; 2024 &middot; 047</span>
-          </div>
+        <div class="cover-emblem">
+          <img src="yas-official-emblem.png" alt="Young Arbitrators Society Moot Competition 2026 official emblem">
         </div>
       </div>
       <div class="content-pad">
@@ -1177,6 +1341,71 @@ code{font-family:var(--mono); background:var(--paper-dim); padding:1px 5px; bord
   }
   window.addEventListener('scroll', onScroll, { passive:true });
   onScroll();
+})();
+</script>
+<script>
+(function(){
+  var definitions = {
+    'CarbonAI Verification': 'CarbonAI’s assessment of submitted VCUs against the VCS Methodology applicable to the Mau Project.',
+    'CarbonChain Platform': 'DigiCarbon’s digital marketplace and payment infrastructure for carbon-credit transactions.',
+    'VCS Methodology': 'VCS Methodology VM0015 (Avoided Unplanned Deforestation, version 1.3), the contractual reference standard for VCU quality.',
+    'NCIA Rules 2024': 'The NCIA Arbitration Rules that entered into force on 1 January 2024, including rules on AI systems, smart contracts, and digital-asset valuation.',
+    'NCIA Rules 2015': 'The NCIA Arbitration Rules in force when the parties concluded the SCPA on 15 March 2023.',
+    'Mau Project': 'The Mau Forest Carbon Conservation Project, registered with Verra as Project No. 2891.',
+    'Smart Contract': 'The automated blockchain payment protocol that releases GRT after CarbonAI Verification.',
+    'GreenToken': 'DigiCarbon’s digital token, traded under the ticker symbol GRT.',
+    'CarbonAI': 'DigiCarbon’s proprietary artificial-intelligence system for evaluating carbon-credit submissions.',
+    'CarbonChain': 'DigiCarbon’s platform for purchasing, tokenising, and reselling voluntary carbon credits.',
+    'ClimateFirst': 'ClimateFirst Partners Ltd, the independent buyer in Savanna’s 1 June 2024 cover sale.',
+    'CMR 2024': 'Kenya’s Carbon Markets Regulations, 2024.',
+    'SCPA': 'The Smart Carbon Purchase Agreement dated 15 March 2023 between Savanna and DigiCarbon.',
+    'VCUs': 'Verified Carbon Units: tradable units issued under Verra’s Verified Carbon Standard, each representing one metric tonne of CO2 equivalent.',
+    'VCU': 'A Verified Carbon Unit issued under Verra’s Verified Carbon Standard, representing one metric tonne of CO2 equivalent.',
+    'VVBs': 'Validation and Verification Bodies accredited to independently verify projects and carbon credits.',
+    'VVB': 'A Validation and Verification Body accredited to independently verify projects and carbon credits.',
+    'VCS': 'The Verified Carbon Standard administered by Verra.',
+    'Verra': 'The international standards body that administers the Verified Carbon Standard and its registry.',
+    'NCIA': 'The Nairobi Centre for International Arbitration, the institution administering this arbitration.',
+    'GRT': 'GreenToken, DigiCarbon’s proprietary blockchain-based virtual asset and contractual payment instrument.'
+  };
+  var escapeRegExp = function(value){ return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); };
+  var terms = Object.keys(definitions).sort(function(a,b){ return b.length - a.length; });
+  var matcher = new RegExp('\\b(' + terms.map(escapeRegExp).join('|') + ')\\b', 'g');
+  var root = document.querySelector('article');
+  var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: function(node){
+      var parent = node.parentElement;
+      if (!parent || /^(SCRIPT|STYLE|A|BUTTON|TEXTAREA)$/i.test(parent.tagName) || parent.closest('.defined-term')) return NodeFilter.FILTER_REJECT;
+      matcher.lastIndex = 0;
+      return matcher.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  var nodes = [], current;
+  while ((current = walker.nextNode())) nodes.push(current);
+  nodes.forEach(function(node){
+    var text = node.nodeValue, fragment = document.createDocumentFragment(), lastIndex = 0;
+    matcher.lastIndex = 0;
+    text.replace(matcher, function(match, term, offset){
+      fragment.appendChild(document.createTextNode(text.slice(lastIndex, offset)));
+      var marked = document.createElement('span');
+      marked.className = 'defined-term'; marked.tabIndex = 0;
+      marked.textContent = match; marked.setAttribute('data-definition', definitions[term]);
+      marked.setAttribute('aria-label', term + ': ' + definitions[term]);
+      fragment.appendChild(marked); lastIndex = offset + match.length;
+      return match;
+    });
+    fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+    node.parentNode.replaceChild(fragment, node);
+  });
+  var studyButton = document.getElementById('study-mode-toggle');
+  var setStudyMode = function(enabled){
+    document.body.classList.toggle('study-mode', enabled);
+    studyButton.setAttribute('aria-pressed', String(enabled));
+    studyButton.textContent = enabled ? 'Day mode' : 'Study mode';
+    try { localStorage.setItem('yas-study-mode', enabled ? 'on' : 'off'); } catch (e) {}
+  };
+  try { setStudyMode(localStorage.getItem('yas-study-mode') === 'on'); } catch (e) { setStudyMode(false); }
+  studyButton.addEventListener('click', function(){ setStudyMode(!document.body.classList.contains('study-mode')); });
 })();
 </script>
 </body>
